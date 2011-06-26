@@ -1,5 +1,5 @@
-== pic.kksg.net
+= pic.kksg.net
 
-*http://pic.kksg.netのソース
+* http://pic.kksg.net のソース
 
-original gyazo https://github.com/gyazo/
+original gyazo https://github.com/gyazo
