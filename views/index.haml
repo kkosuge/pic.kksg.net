@@ -1,0 +1,7 @@
+%html
+  %head
+  %link{:href => "pic.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
+  %body
+    -@images.each do |image|
+      %a{:href => "images/#{image}", :target => "_blank"}
+        %img{:src => "images/#{image}"}
