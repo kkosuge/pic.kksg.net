@@ -1,3 +1,7 @@
-img{
-  border: 1px solid #000;
+
+.myPic
+{
+  margin:10px;
+   border-radius:5px;
+   border:1px solid #ccc;
 }
