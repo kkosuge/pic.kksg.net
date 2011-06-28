@@ -7,7 +7,7 @@ require 'sdbm'
 #TODO require 'active_record'
 
 
-#class Gyazo < Sinatra::Base
+class Gyazo < Sinatra::Base
 
   configure do
     set :gyazo_id, ''
@@ -34,4 +34,4 @@ require 'sdbm'
     File.open("#{options.image_dir}/#{hash}.png","w").print(imagedata)
     "http://#{options.image_url}/#{hash}.png"
   end
-#end
+end
