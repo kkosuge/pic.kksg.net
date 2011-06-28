@@ -1,7 +1,11 @@
 %html
   %head
   %link{:href => "pic.css", :media => "screen", :rel => "stylesheet", :type => "text/css"}
+  %script{:src => "/js/jquery-1.6.1.min.js", :type => 'text/javascript'}
+  %script{:src => "/js/jquery.MyThumbnail.js", :type => 'text/javascript'}
+  %script{:src => "/js/main.js", :type => 'text/javascript'}
   %body
-    -@images.each do |image|
-      %a{:href => "images/#{image}", :target => "_blank"}
-        %img{:src => "images/#{image}"}
+    %div{:id => "thumb"}
+      -@images.each do |image|
+        %a{:href => "images/#{image}", :target => "_blank"}
+          %img{:src => "images/#{image}"}
