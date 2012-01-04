@@ -1,5 +1,6 @@
 require 'rubygems'
 require 'sinatra'
-require '/opt/nginx/rails/pic/app.rb'
+$:.unshift(File.dirname(__FILE__))
+require 'app'
 
-run Gyazo
+run Sinatra::Application

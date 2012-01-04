@@ -1,8 +1,12 @@
 $(function(){
-  $('#thumb img').MyThumbnail({
-    thumbWidth:350,
-    thumbHeight:350,
-    backgroundColor:"#ccc",
-    imageDivClass:"myPic"
+	$("#grid-content").vgrid({
+		easeing: "easeOutQuint",
+		    useLoadImageEvent: true,
+		    time: 400,
+		    delay: 20,
+		    fadeIn: {
+		    time: 500,
+			delay: 50
+			}
   });
 });
