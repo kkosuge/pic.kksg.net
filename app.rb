@@ -15,7 +15,7 @@ Mongoid.configure do |config|
 end
 
 configure do
-  set :gyazo_id, ''
+  set :gyazo_id , 'sample'
   set :image_dir, 'public'
   set :image_url, 'http://pic.kksg.net'
 end
@@ -33,10 +33,19 @@ get '/' do
 end
 
 post '/upload/gyazo' do
-  raise unless request[:id] == options.gyazo_id
+  raise unless params['id'] == options.gyazo_id
+
   imagedata = params['imagedata'][:tempfile].read
   hash = Digest::MD5.hexdigest(imagedata)[0..2]
-  File.open("#{options.image_dir}/#{hash}.png","w").print(imagedata)
-  Image.create(file_name: "#{hash}.png")
-  "http://#{options.image_url}/#{hash}.png"
+  file_name = "#{hash}.png"
+  file_path = "#{options.image_dir}/#{file_name}"
+
+  File.open("#{file_path}","w").print(imagedata)
+  image = Magick::Image.read("#{file_path}").first
+  image.resize_to_fit!(200,200)
+  image.write("#{options.image_dir}/thumb/#{file_name}")
+ 
+  Image.create(file_name: "#{file_name}")
+
+  "#{options.image_url}/#{file_name}"
 end

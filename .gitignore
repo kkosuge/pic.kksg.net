@@ -1,2 +1,9 @@
 .DS_Store
 .sqlite3
+public/*.png
+public/thumb/*.png
+.pid
+.log
+log/*
+tmp/pids/*
+

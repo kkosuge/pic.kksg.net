@@ -1,8 +1,8 @@
 require 'rubygems'
-require 'rmagick'
+require 'RMagick' 
 
-width = 300
-height = 300
+width = 200
+height = 200
 
 Dir.mkdir("./thumb") unless Dir.exist?("./thumb")
 files = Dir.entries("./")

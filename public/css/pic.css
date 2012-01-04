@@ -1,7 +1,11 @@
-
+#grid-content{
+}
+.pics{
+  float:left;
+}
 .myPic
 {
   margin:10px;
-   border-radius:5px;
-   border:1px solid #ccc;
+  border-radius:5px;
+  border:1px solid #ccc;
 }
