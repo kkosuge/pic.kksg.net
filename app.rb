@@ -4,6 +4,7 @@ require 'sinatra'
 require 'haml'
 require 'json'
 require 'mongoid'
+gem "rmagick", :require => "RMagick"
 require 'RMagick'
 $:.unshift(File.dirname(__FILE__))
 require 'models/image'
