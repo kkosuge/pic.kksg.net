@@ -1,17 +1,19 @@
 # coding: utf-8
 require 'rubygems'
 require 'sinatra'
-require 'digest/md5'
 require 'haml'
-require 'sdbm'
-require 'pp'
 require 'json'
 require 'mongoid'
+require 'RMagick'
 $:.unshift(File.dirname(__FILE__))
 require 'models/image'
 
 Mongoid.configure do |config|
   config.master = Mongo::Connection.new.db('pic')
+end
+
+def randstr(i=3)
+  Array.new(i){(('a'..'z').to_a+('A'..'Z').to_a+('0'..'9').to_a)[rand(62)]}.join
 end
 
 configure do
@@ -28,7 +30,7 @@ get '/images.json' do
 end
 
 get '/' do
-  @images = Image.all
+  @images = Image.all.desc(:updated_at)
   haml :index
 end
 
@@ -36,8 +38,7 @@ post '/upload/gyazo' do
   raise unless params['id'] == options.gyazo_id
 
   imagedata = params['imagedata'][:tempfile].read
-  hash = Digest::MD5.hexdigest(imagedata)[0..2]
-  file_name = "#{hash}.png"
+  file_name = "#{randstr}.png"
   file_path = "#{options.image_dir}/#{file_name}"
 
   File.open("#{file_path}","w").print(imagedata)
