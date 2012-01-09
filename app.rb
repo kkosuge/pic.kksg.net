@@ -23,13 +23,6 @@ configure do
   set :image_url, 'http://pic.kksg.net'
 end
 
-get '/images.json' do
-  content_type :json
-  images = []
-  Image.all.each {|i| images << i.file_name}
-  JSON.unparse(images: images)
-end
-
 get '/' do
   @images = Image.all.desc(:updated_at)
   haml :index
