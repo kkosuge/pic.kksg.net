@@ -5,8 +5,11 @@
     %script{:type => 'text/javascript', :src => "/js/jquery.MyThumbnail.js"}
     %script{:type => 'text/javascript', :src => "/js/main.js?v2"}
   %body
+    %div{:class => "header"}
+      %h1{:style => "display:inline;"} スクリーンショットの瞬間共有
+      %a{:href => "https://github.com/kkosuge/pic.kksg.net"} Github
     %div{:id => "grid-content"}
       -@images.each do |image|
         %div{:class => "pics"}
           %a{:href => "#{image.file_name}", :target => "_blank"}
-            %img{:src => "thumb/#{image.file_name}"}
+            %img{:src => "http://pic.kksg.net/scale/150x150.#{image.file_name}"}
